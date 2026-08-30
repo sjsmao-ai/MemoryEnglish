@@ -39,6 +39,7 @@ jobs:
           echo "Android project: $PROJECT_DIR"
           test -n "$PROJECT_DIR"
           cd "$PROJECT_DIR"
+          sed -i '/android {/a\    compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }\n    kotlinOptions { jvmTarget = "17" }' app/build.gradle.kts
           gradle assembleDebug
 
       - name: Upload APK
